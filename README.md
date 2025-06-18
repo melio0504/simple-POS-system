@@ -54,6 +54,51 @@ Before you begin, ensure you have the following installed:
 - Create a new database named pos_inventory
 - Import the database structure (SQL file provided in the project)
 
+```
+CREATE DATABASE IF NOT EXISTS pos_inventory;
+USE pos_inventory;
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    quantity INT NOT NULL,
+    sold INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    customer_name VARCHAR(100),
+    customer_id VARCHAR(50),
+    sale_type ENUM('delivery', 'pickup') NOT NULL,
+    subtotal DECIMAL(10,2) NOT NULL,
+    discount DECIMAL(10,2) DEFAULT 0,
+    total DECIMAL(10,2) NOT NULL,
+    cash DECIMAL(10,2) NOT NULL,
+    change_amount DECIMAL(10,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE sale_items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sale_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (sale_id) REFERENCES sales(id),
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+-- Sample products
+INSERT INTO products (name, price, quantity) VALUES 
+('Laptop', 999.99, 10),
+('Smartphone', 599.99, 15),
+('Headphones', 99.99, 20),
+('Mouse', 19.99, 5),
+('Keyboard', 49.99, 8);
+```
+
 4. **Configure Database Connection**
 
 - Open php/db_connect.php
