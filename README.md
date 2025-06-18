@@ -20,6 +20,11 @@ A simple Point of Sale (POS) system with inventory management built using basic 
 - Low stock alerts
 - Basic customer information management
 
+## Screenshots
+
+![Screenshot-1](/assets/screenshot-1.png)
+![Screenshot-2](/assets/screenshot-2.png)
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:
