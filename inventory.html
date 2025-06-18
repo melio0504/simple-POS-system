@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-boxes"></i> Inventory Management</h1>
+            <nav>
+                <a href="index.html"><i class="fas fa-shopping-cart"></i> POS</a>
+                <a href="inventory.html" class="active"><i class="fas fa-boxes"></i> Inventory</a>
+            </nav>
+        </header>
+        <div class="inventory-container">
+            <div class="inventory-header">
+                <h2><i class="fas fa-clipboard-list"></i> Product Inventory</h2>
+                <div class="staff-info">
+                    <span id="staff-id">Staff ID: ADMIN001</span>
+                    <span id="inventory-date"></span>
+                    <span id="inventory-time"></span>
+                </div>
+                <button id="add-product" class="btn btn-primary"><i class="fas fa-plus"></i> Add Product</button>
+            </div>
+            <div class="inventory-table-container">
+                <table id="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Available</th>
+                            <th>Sold</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-body">
+                        <!-- Inventory data will be loaded here via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="low-stock-alert" id="low-stock-alert">
+                <h3><i class="fas fa-exclamation-triangle"></i> Low Stock Alert</h3>
+                <div id="low-stock-items">
+                    <!-- Low stock items will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-plus-circle"></i> Add New Product</h2>
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-price">Price:</label>
+                    <input type="number" id="product-price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="product-quantity">Quantity:</label>
+                    <input type="number" id="product-quantity" min="0" required>
+                </div>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save"></i> Save Product</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
